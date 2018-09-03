@@ -1,3 +1,4 @@
 module.exports = {
-  mongoURI: 'mongodb://developer_connector:developer_CoNNector1@ds161411.mlab.com:61411/developer_connector'
+  mongoURI: 'mongodb://developer_connector:developer_CoNNector1@ds161411.mlab.com:61411/developer_connector',
+  secretOrKey: 'saf424sfdf08'
 };

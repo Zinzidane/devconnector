@@ -26,7 +26,7 @@ class CreateProfile extends Component {
       facebook: '',
       linkedin: '',
       youtube: '',
-      vk: '',
+      instagram: '',
       errors: {}
     };
 
@@ -49,19 +49,30 @@ class CreateProfile extends Component {
       // Bring skills array back to CSV
       const skillsCSV = profile.skills.join(',');
 
-      // If profile file does not exist, make empty string
+      // If profile field doesnt exist, make empty string
       profile.company = !isEmpty(profile.company) ? profile.company : '';
-      profile.location = !isEmpty(profile.location) ? profile.location : '';
       profile.website = !isEmpty(profile.website) ? profile.website : '';
-      profile.githubusername = !isEmpty(profile.githubusername) ? profile.githubusername : '';
+      profile.location = !isEmpty(profile.location) ? profile.location : '';
+      profile.githubusername = !isEmpty(profile.githubusername)
+        ? profile.githubusername
+        : '';
       profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
-
       profile.social = !isEmpty(profile.social) ? profile.social : {};
-      profile.twitter = !isEmpty(profile.social.twitter) ? profile.social.twitter : '';
-      profile.youtube = !isEmpty(profile.social.youtube) ? profile.social.youtube : '';
-      profile.facebook = !isEmpty(profile.social.facebook) ? profile.social.facebook : '';
-      profile.linkedin = !isEmpty(profile.social.linkedin) ? profile.social.linkedin : '';
-      profile.vk = !isEmpty(profile.social.vk) ? profile.social.vk : '';
+      profile.twitter = !isEmpty(profile.social.twitter)
+        ? profile.social.twitter
+        : '';
+      profile.facebook = !isEmpty(profile.social.facebook)
+        ? profile.social.facebook
+        : '';
+      profile.linkedin = !isEmpty(profile.social.linkedin)
+        ? profile.social.linkedin
+        : '';
+      profile.youtube = !isEmpty(profile.social.youtube)
+        ? profile.social.youtube
+        : '';
+      profile.instagram = !isEmpty(profile.social.instagram)
+        ? profile.social.instagram
+        : '';
 
       // Set component fields state
       this.setState({
@@ -77,7 +88,7 @@ class CreateProfile extends Component {
         facebook: profile.facebook,
         linkedin: profile.linkedin,
         youtube: profile.youtube,
-        vk: profile.vk
+        instagram: profile.instagram
       });
     }
   }
@@ -98,7 +109,7 @@ class CreateProfile extends Component {
       facebook: this.state.facebook,
       linkedin: this.state.linkedin,
       youtube: this.state.youtube,
-      vk: this.state.vk
+      instagram: this.state.instagram
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -153,12 +164,12 @@ class CreateProfile extends Component {
           />
 
           <InputGroup
-            placeholder="Vkontakte Page URL"
-            name="vkontakte"
-            icon="fab fa-vk"
-            value={this.state.vk}
+            placeholder="Instagram Page URL"
+            name="instagram"
+            icon="fab fa-instagram"
+            value={this.state.instagram}
             onChange={this.onChange}
-            error={errors.vk}
+            error={errors.instagram}
           />
         </div>
       );
@@ -182,7 +193,9 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <Link to="/dashboard" className="btn btn-light">Go back</Link>
+              <Link to="/dashboard" className="btn btn-light">
+                Go Back
+              </Link>
               <h1 className="display-4 text-center">Edit Profile</h1>
               <small className="d-block pb-3">* = required fields</small>
               <form onSubmit={this.onSubmit}>

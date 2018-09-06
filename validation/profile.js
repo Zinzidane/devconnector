@@ -1,4 +1,4 @@
-const  Validator = require('validator');
+const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
 module.exports = function validateProfileInput(data) {
@@ -8,19 +8,19 @@ module.exports = function validateProfileInput(data) {
   data.status = !isEmpty(data.status) ? data.status : '';
   data.skills = !isEmpty(data.skills) ? data.skills : '';
 
-  if (!Validator.isLength(data.handle, {min: 2, max: 40})) {
-    errors.handle = 'Handle must be between 2 and 40 characters';
+  if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {
+    errors.handle = 'Handle needs to between 2 and 4 characters';
   }
 
-  if (!Validator.isEmpty(data.handle)) {
+  if (Validator.isEmpty(data.handle)) {
     errors.handle = 'Profile handle is required';
   }
 
-  if (!Validator.isEmpty(data.status)) {
-    errors.status = 'Profile status is required';
+  if (Validator.isEmpty(data.status)) {
+    errors.status = 'Status field is required';
   }
-  
-  if (!Validator.isEmpty(data.skills)) {
+
+  if (Validator.isEmpty(data.skills)) {
     errors.skills = 'Skills field is required';
   }
 
@@ -54,15 +54,14 @@ module.exports = function validateProfileInput(data) {
     }
   }
 
-  if (!isEmpty(data.vk)) {
-    if (!Validator.isURL(data.vk)) {
-      errors.vk = 'Not a valid URL';
+  if (!isEmpty(data.instagram)) {
+    if (!Validator.isURL(data.instagram)) {
+      errors.instagram = 'Not a valid URL';
     }
   }
-
 
   return {
     errors,
     isValid: isEmpty(errors)
   };
-}
+};

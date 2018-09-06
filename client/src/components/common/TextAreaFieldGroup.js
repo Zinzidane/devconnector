@@ -1,8 +1,15 @@
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
- 
-const TextAreaFieldGroup = ({ name, placeholder, value, error, info, onChange }) => {
+
+const TextAreaFieldGroup = ({
+  name,
+  placeholder,
+  value,
+  error,
+  info,
+  onChange
+}) => {
   return (
     <div className="form-group">
       <textarea
@@ -15,11 +22,9 @@ const TextAreaFieldGroup = ({ name, placeholder, value, error, info, onChange })
         onChange={onChange}
       />
       {info && <small className="form-text text-muted">{info}</small>}
-      {error && (
-        <div className="invalid-feedback">{error}</div>
-      )}
+      {error && <div className="invalid-feedback">{error}</div>}
     </div>
-  )
+  );
 };
 
 TextAreaFieldGroup.propTypes = {

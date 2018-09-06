@@ -1,4 +1,10 @@
-import { ADD_POST, GET_POSTS, POST_LOADING, DELETE_POST, GET_POST } from "../actions/types";
+import {
+  ADD_POST,
+  GET_POSTS,
+  GET_POST,
+  DELETE_POST,
+  POST_LOADING
+} from '../actions/types';
 
 const initialState = {
   posts: [],
@@ -7,11 +13,23 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case POST_LOADING:
       return {
         ...state,
         loading: true
+      };
+    case GET_POSTS:
+      return {
+        ...state,
+        posts: action.payload,
+        loading: false
+      };
+    case GET_POST:
+      return {
+        ...state,
+        post: action.payload,
+        loading: false
       };
     case ADD_POST:
       return {
@@ -23,18 +41,6 @@ export default function(state = initialState, action) {
         ...state,
         posts: state.posts.filter(post => post._id !== action.payload)
       };
-    case GET_POSTS: 
-     return {
-       ...state,
-       posts: action.payload,
-       loading: false
-     };
-    case GET_POST:
-     return {
-       ...state,
-      post: action.payload,
-      loading: false
-     };
     default:
       return state;
   }

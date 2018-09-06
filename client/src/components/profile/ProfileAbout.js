@@ -9,13 +9,12 @@ class ProfileAbout extends Component {
     // Get first name
     const firstName = profile.user.name.trim().split(' ')[0];
 
-    // Skill list
-    const skills = profile.skills.map((skill, index) => {
+    // Skill List
+    const skills = profile.skills.map((skill, index) => (
       <div key={index} className="p-3">
-        <i className="fa fa-check" />
-        {skill}
+        <i className="fa fa-check" /> {skill}
       </div>
-    });
+    ));
 
     return (
       <div className="row">
@@ -23,7 +22,11 @@ class ProfileAbout extends Component {
           <div className="card card-body bg-light mb-3">
             <h3 className="text-center text-info">{firstName}'s Bio</h3>
             <p className="lead">
-              {isEmpty(profile.bio) ? (<span>{firstName} does not have a bio</span>) : (<span>{profile.bio}</span>)}
+              {isEmpty(profile.bio) ? (
+                <span>{firstName} does not have a bio</span>
+              ) : (
+                <span>{profile.bio}</span>
+              )}
             </p>
             <hr />
             <h3 className="text-center text-info">Skill Set</h3>
@@ -35,7 +38,7 @@ class ProfileAbout extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -43,4 +46,4 @@ ProfileAbout.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-export default  ProfileAbout;
+export default ProfileAbout;

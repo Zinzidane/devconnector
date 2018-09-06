@@ -25,7 +25,7 @@ class CreateProfile extends Component {
       facebook: '',
       linkedin: '',
       youtube: '',
-      vk: '',
+      instagram: '',
       errors: {}
     };
 
@@ -55,7 +55,7 @@ class CreateProfile extends Component {
       facebook: this.state.facebook,
       linkedin: this.state.linkedin,
       youtube: this.state.youtube,
-      vk: this.state.vk
+      instagram: this.state.instagram
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -110,12 +110,12 @@ class CreateProfile extends Component {
           />
 
           <InputGroup
-            placeholder="Vkontakte Page URL"
-            name="vkontakte"
-            icon="fab fa-vk"
-            value={this.state.vk}
+            placeholder="Instagram Page URL"
+            name="instagram"
+            icon="fab fa-instagram"
+            value={this.state.instagram}
             onChange={this.onChange}
-            error={errors.vk}
+            error={errors.instagram}
           />
         </div>
       );
@@ -242,7 +242,6 @@ class CreateProfile extends Component {
 }
 
 CreateProfile.propTypes = {
-  createProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };

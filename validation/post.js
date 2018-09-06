@@ -1,4 +1,4 @@
-const  Validator = require('validator');
+const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
 module.exports = function validatePostInput(data) {
@@ -6,8 +6,8 @@ module.exports = function validatePostInput(data) {
 
   data.text = !isEmpty(data.text) ? data.text : '';
 
-  if (!Validator.isLength(data.text, {min: 10, max: 300})) {
-    errors.text = 'Text should be between 10 and 300 characters';
+  if (!Validator.isLength(data.text, { min: 10, max: 300 })) {
+    errors.text = 'Post must be between 10 and 300 characters';
   }
 
   if (Validator.isEmpty(data.text)) {
@@ -18,4 +18,4 @@ module.exports = function validatePostInput(data) {
     errors,
     isValid: isEmpty(errors)
   };
-}
+};
